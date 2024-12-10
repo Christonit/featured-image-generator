@@ -1,9 +1,23 @@
 import express from 'express';
 import { analyzeContent } from './ai-analysis.js';
 import { generateTSImage, uploadImageToWordpress, generateSttImage } from './draw.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 
 const app = express();
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+// Serve the `fonts` directory
+app.use('/fonts', express.static(path.join(__dirname, 'fonts')));
+
 app.use(express.json());
+
 
 app.post('/handle-image-generation', async (req, res) => {
     try {
