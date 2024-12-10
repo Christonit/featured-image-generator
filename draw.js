@@ -29,10 +29,10 @@ export async function generateTSImage({
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    const fontPath = path.resolve(process.cwd(), 'fonts', 'Oswald-Bold.ttf');
-    const images_path = path.resolve(process.cwd(), 'images', sentiment || "neutral");
+    const fontPath = path.resolve('fonts', 'Oswald-Bold.ttf');
+    const images_path = path.resolve('images', sentiment || "neutral");
     const files_length = fs.readdirSync(images_path).length;
-    const images_folder = path.resolve(process.cwd(), 'images');
+    const images_folder = path.resolve('images');
 
 
     console.log("GENERATING TS IMAGE: 1. Created canvas");
