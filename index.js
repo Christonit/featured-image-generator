@@ -1,6 +1,10 @@
 import express from 'express';
 import { analyzeContent } from './ai-analysis.js';
-import { generateTSImage, uploadImageToWordpress, generateSttImage } from './draw.js';
+import {
+    generateTSImage, uploadImageToWordpress,
+    //  generateSttImage 
+
+} from './draw.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -44,14 +48,14 @@ app.post('/handle-image-generation', async (req, res) => {
             });
         }
 
-        if (STT_BACKENDS.includes(backend)) {
-            console.log("2. Executing image generation for STT backend");
-            buffer = await generateSttImage({
-                title: tagline,
-                company_logo: company_logo,
-                sentiment: sentiment,
-            });
-        }
+        // if (STT_BACKENDS.includes(backend)) {
+        //     console.log("2. Executing image generation for STT backend");
+        //     buffer = await generateSttImage({
+        //         title: tagline,
+        //         company_logo: company_logo,
+        //         sentiment: sentiment,
+        //     });
+        // }
 
         console.log("3. SUCCESSFUL Image Creation for", backend);
         if (buffer) {
