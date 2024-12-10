@@ -29,10 +29,12 @@ export async function generateTSImage({
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    const fontPath = path.resolve('fonts', 'Oswald-Bold.ttf');
-    const images_path = path.resolve('images', sentiment || "neutral");
+
+    console.log(`Setting up path`, __dirname, __filename);
+    console.log(`Font count`, path.join(__dirname, 'fonts').length);
+    const images_path = path.join('images', sentiment || "neutral");
     const files_length = fs.readdirSync(images_path).length;
-    const images_folder = path.resolve('images');
+    const images_folder = "./images"
 
 
     console.log("GENERATING TS IMAGE: 1. Created canvas");
@@ -42,6 +44,7 @@ export async function generateTSImage({
     // const ctx = canvas.getContext("2d");
 
 
+    const fontPath = path.resolve(__dirname, 'fonts', 'Oswald-Bold.ttf');
 
     registerFont(fontPath, { family: "Oswald" });
 
@@ -1343,5 +1346,49 @@ export const uploadImageToWordpress = async (wordpress_url, buffer, tagline, app
         return { error: error.message };
     }
 };
+
+// Stud execution to create the image
+if (process.env.ENVIRONMENT === "local" && process.env.EXECUTE_LOCAL
+) {
+
+    // generateSttImage({
+    generateTSImage({
+        title: "Grab Holdings' stock surge: [s]What's fueling the rise?[s]",
+        // title: "SOUNDHOUND AI'S a buy opportunity?",
+        // title: "Nokia's market shuffle: [s]What's behind the decline[s]",
+        // title: "OpenDoor's [s]Surprising q3 earnings[s]: A hidden gem?",
+        // title: "C3. AIs STOCK SURGE: [s]Discover the innovation edge[s]",
+        // title: "RIGETTI'S QUANTUM [s]Breakthrough[s] Market rally in sight? ",
+        // title: "SEMLER's Bitcoin [s]UP.[s]A Risk worth taking?",
+        // title: "Intouitive machines skyrockets: Is the moon  [s]noew the limit[s]?",
+        // title: "Recursion's [s]STOCK SURGE[s]: AI partnership & FDA approval",
+        // title: "APPL'S stock: [s]Opportunity or Risk?[s]",
+        // title: "Innodata's stock [s]skyrockets[s]: what's fueling the surge?",
+        // title: "D-WAVE quantum's stock surge: What's behind the rise?",
+        // title: "AAOI's stock surge: [s]opportunity or risk?[s]",
+        // title: "Coherent Corp's [s]AI Inovations:[s] Is it time to invest?",
+        // title: "Uipath's stock plummets: what's behind the  [s]steep drop?[/s]",
+        // title: "Denison mines' [s]new ventures:[/s] a market game changer?",
+        // title: "Bit digital's stock dips: what's next for investors?",
+        // title: "Bitcoin's [s]record run ignites[/s] a crypto penny stocks",
+        // title: "C3. AIs: [s]strategic partnership[/s] with microsoft: a game changer?",
+        // title: "Super micro's stock surge: [s]Rebound or just a spike?[/s]",
+        company_logo: null,
+        // company_logo: "Warner Bros. Discovery.png",
+        sentiment: "positive"
+        // sentiment: "negative"
+        // sentiment: "neutral"
+    })
+    // .then((buffer) => {
+
+    //     uploadImageToWordpress("https://content.timothysykes.com/", buffer, "FNMA's Stock Surge: [s]What's Driving the Change?[s]",
+
+    //         process.env.APP_PASSWORD).then((data) => {
+
+    //             console.log("7. Image uploaded to wordpress", data);
+    //         })
+
+    // })
+}
 
 
