@@ -29,7 +29,7 @@ export async function generateTSImage({
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-    const images_path = path.join(__dirname, 'images', sentiment || "neutral");
+    const images_path = path.resolve(__dirname, 'images', sentiment || "neutral");
     const files_length = fs.readdirSync(images_path).length;
     const images_folder = path.resolve(__dirname, 'images');
 
