@@ -31,8 +31,7 @@ export async function generateTSImage({
     const __dirname = path.dirname(__filename);
     const images_path = path.join(__dirname, 'images', sentiment || "neutral");
     const files_length = fs.readdirSync(images_path).length;
-    const images_folder = process.env.ENVIRONMENT === "local"
-        ? "./images" : "/var/task/images";
+    const images_folder = path.resolve(__dirname, 'images');
 
 
     console.log("GENERATING TS IMAGE: 1. Created canvas");
