@@ -61,14 +61,21 @@ export async function generateTSImage({
 
     switch (sentiment) {
         case "positive":
-            image = await loadImage(`${images_folder}/positive/${Math.floor(Math.random() * 3)}.png`);
+
+            const path = path.resolve(__dirname, 'images', 'positive', `${Math.floor(Math.random() * 3)}.png`);
+            console.log("GENERATING TS IMAGE: 2. Loading positive image", path);
+            image = await loadImage(path);
             break;
         case "negative":
-            image = await loadImage(`${images_folder}/negative/${Math.floor(Math.random() * 2)}.png`);
+            const negative_path = path.resolve(__dirname, 'images', 'negative', `${Math.floor(Math.random() * 2)}.png`);
+            console.log("GENERATING TS IMAGE: 2. Loading negative image", negative_path);
+            image = await loadImage(negative_path);
             break;
         case "neutral":
         default:
-            image = await loadImage(`${images_folder}/neutral/${Math.floor(Math.random() * 3)}.png`);
+            console.log("GENERATING TS IMAGE: 2. Loading neutral image");
+            const neutral_path = path.resolve(__dirname, 'images', 'neutral', `${Math.floor(Math.random() * 3)}.png`);
+            image = await loadImage(neutral_path);
             break;
     }
 
