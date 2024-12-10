@@ -34,13 +34,10 @@ export async function generateTSImage({
     console.log(`Font count`, path.join(__dirname, 'fonts').length);
     const images_folder = "./images"
 
-
     console.log("GENERATING TS IMAGE: 1. Created canvas");
-
 
     const canvas = createCanvas(1118, 806);
     // const ctx = canvas.getContext("2d");
-
 
     const fontPath = path.resolve(__dirname, 'fonts', 'Oswald-Bold.ttf');
 
@@ -51,7 +48,6 @@ export async function generateTSImage({
     } catch (error) {
         console.error('Error registering font:', error.message);
     }
-
 
     setTimeout(() => {
 
@@ -78,7 +74,6 @@ export async function generateTSImage({
             image = await loadImage(neutral_path);
             break;
     }
-
 
     let textBlockHeight = 0;
 
